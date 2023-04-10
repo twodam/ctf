@@ -53,7 +53,16 @@ contract UnstoppableTest is Test {
     }
 
     function testStopFlashloan() public {
-        // do something to stop flashloan
+        // Challenge #1 - Unstoppable
+        // There’s a tokenized vault with a million DVT tokens deposited. It’s offering flash loans for free, until the grace period ends.
+        // To pass the challenge, make the vault stop offering flash loans.
+        // You start with 10 DVT tokens in balance.
+
+        // Solution
+
+        // It is no longer possible to execute flash loans
         vm.expectRevert();
+        vm.startPrank(someUser);
+        receiverContract.executeFlashLoan(100 * 1e18);
     }
 }
